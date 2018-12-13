@@ -1,0 +1,8 @@
+for instance in worker1 worker2; do
+  scp ${instance}.kubeconfig kube-proxy.kubeconfig ${instance}:~/
+done
+
+
+for instance in control1 control2; do
+  scp admin.kubeconfig kube-controller-manager.kubeconfig kube-scheduler.kubeconfig ${instance}:~/
+done

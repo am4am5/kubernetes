@@ -1,4 +1,4 @@
-sudo dnf install wget tar
+sudo dnf install -y wget tar
 
 
 wget -q --show-progress --https-only --timestamping \

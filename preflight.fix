@@ -1,6 +1,6 @@
 dnf install iproute-tc
 
 modprobe br_netfilter
-(lsmod |grep netfilter)
+lsmod | grep netfilter
 
 echo '1' > /proc/sys/net/ipv4/ip_forward

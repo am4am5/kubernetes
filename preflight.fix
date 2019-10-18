@@ -1,3 +1,5 @@
+dnf install iproute-tc
+
 modprobe br_netfilter
 (lsmod |grep netfilter)
 

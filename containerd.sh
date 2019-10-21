@@ -4,4 +4,14 @@ tar --no-overwrite-dir -C / -xzf cri-containerd-1.3.0.linux-amd64.tar.gz
 
 rm -rf /opt/containerd
 
+containerd config default > /etc/containerd/config.toml
+nano /etc/containerd/config.toml
+
+[plugins."io.containerd.grpc.v1.cri".registry]
+      [plugins."io.containerd.grpc.v1.cri".registry.mirrors]
+        [plugins."io.containerd.grpc.v1.cri".registry.mirrors."docker.io"]
+          endpoint = ["https://registry-1.docker.io"]
+        [plugins."io.containerd.grpc.v1.cri".registry.mirrors."kubeworker1:30020"]
+          endpoint = ["http://kubeworker1:30020"]
+
 systemctl enable --now containerd

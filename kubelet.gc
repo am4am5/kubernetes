@@ -1,0 +1,9 @@
+nano /var/lib/kubelet/config.yaml
+
+on prem:
+imageGCHighThresholdPercent: 65                                                                                                         
+imageGCLowThresholdPercent: 50
+
+DC:
+imageGCHighThresholdPercent: 65                                                                                                         
+imageGCLowThresholdPercent: 50 

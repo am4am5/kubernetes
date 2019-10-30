@@ -1,8 +1,7 @@
 apiVersion: v1
 kind: LimitRange
 metadata:
-  name: limit-mem-cpu-per-container
-spec:
+  name: aismv
   limits:
   - max:
       cpu: "1000m"

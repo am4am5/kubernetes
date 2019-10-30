@@ -5,5 +5,5 @@ imageGCHighThresholdPercent: 65
 imageGCLowThresholdPercent: 50
 
 DC:
-imageGCHighThresholdPercent: 65                                                                                                         
-imageGCLowThresholdPercent: 50 
+imageGCHighThresholdPercent: 30                                                                                                         
+imageGCLowThresholdPercent: 20 

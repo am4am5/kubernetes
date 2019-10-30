@@ -9,4 +9,7 @@ metadata:
     default:
       cpu: "500m"
       memory: "1Gi"
+    defaultRequest:
+      cpu: "100m"
+      memory: "100Mi"    
     type: Container

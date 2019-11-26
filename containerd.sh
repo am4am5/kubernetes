@@ -4,6 +4,7 @@ tar --no-overwrite-dir -C / -xzf cri-containerd-1.3.1.linux-amd64.tar.gz
 
 rm -rf /opt/containerd
 
+mkdir /etc/containerd
 containerd config default > /etc/containerd/config.toml
 nano /etc/containerd/config.toml
 

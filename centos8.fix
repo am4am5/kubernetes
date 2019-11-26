@@ -5,6 +5,8 @@ cat <<EOF | sudo tee /etc/sysconfig/modules/k8.modules
 modprobe br_netfilter
 EOF
 
+echo "modprobe br_netfilter" >> .bashrc
+
 chmod +x /etc/sysconfig/modules/k8.modules
 
 lsmod | grep netfilter
@@ -14,7 +16,6 @@ echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.d/k8s.conf
 echo 1 > /proc/sys/net/ipv4/ip_forward
 
 nano /run/flannel/subnet.env
-
 FLANNEL_NETWORK=10.244.0.0/16                                                                                                           
 FLANNEL_SUBNET=10.244.4.1/24                                                                                                            
 FLANNEL_MTU=1450                                                                                                                        

@@ -18,6 +18,8 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 
 dnf install nfs-utils
 
+systemctl disable --now firewalld
+
 nano /run/flannel/subnet.env
 FLANNEL_NETWORK=10.244.0.0/16                                                                                                           
 FLANNEL_SUBNET=10.244.4.1/24                                                                                                            

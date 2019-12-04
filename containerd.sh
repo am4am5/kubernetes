@@ -15,4 +15,7 @@ nano /etc/containerd/config.toml
         [plugins."io.containerd.grpc.v1.cri".registry.mirrors."172.16.9.49:30020"]
           endpoint = ["http://172.16.9.49:30020"]
 
+
+systemctl restart containerd
+
 systemctl enable --now containerd

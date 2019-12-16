@@ -14,6 +14,9 @@ nano /etc/containerd/config.toml
           endpoint = ["https://registry-1.docker.io"]
         [plugins."io.containerd.grpc.v1.cri".registry.mirrors."172.16.9.49:30020"]
           endpoint = ["http://172.16.9.49:30020"]
+          
+[metrics]
+  address = "127.0.0.1:9323"
 
 update:
 systemctl daemon-reload

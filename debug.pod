@@ -6,3 +6,6 @@ apk update
 apk add busybox-extras
 
 apk add curl
+
+#skip ssl
+curl -k https://<url>

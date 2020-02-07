@@ -1,0 +1,5 @@
+cat /proc/sys/fs/file-nr
+
+#Prometheus
+node_filefd_maximum
+node_filefd_allocated

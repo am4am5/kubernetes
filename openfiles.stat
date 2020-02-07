@@ -5,3 +5,7 @@ ll /proc/*/fd | wc -l
 #Prometheus
 node_filefd_maximum
 node_filefd_allocated
+
+#echo "fs.file-max = 2097152" > /etc/sysctl.d/file-max.conf
+echo "fs.file-max = 2097152" >> /etc/sysctl.conf
+sysctl -p

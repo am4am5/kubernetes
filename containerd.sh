@@ -19,8 +19,7 @@ nano /etc/containerd/config.toml
   address = "127.0.0.1:9323"
 
 update:
-systemctl daemon-reload
-systemctl restart containerd
+systemctl daemon-reload && systemctl restart containerd && systemctl status containerd
 
 install:
 systemctl enable --now containerd

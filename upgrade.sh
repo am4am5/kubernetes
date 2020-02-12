@@ -6,7 +6,4 @@ systemctl restart kubelet
 systemctl status kubelet
 
 workers:
-kubeadm upgrade node
-systemctl daemon-reload
-systemctl restart kubelet
-systemctl status kubelet
+kubeadm upgrade node && systemctl daemon-reload && systemctl restart kubelet && systemctl status kubelet

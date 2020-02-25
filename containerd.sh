@@ -2,8 +2,7 @@ wget https://storage.googleapis.com/cri-containerd-release/cri-containerd-1.3.3.
 
 tar --no-overwrite-dir -C / -xzf cri-containerd-1.3.3.linux-amd64.tar.gz && rm -rf /opt/containerd
 
-mkdir /etc/containerd
-containerd config default > /etc/containerd/config.toml
+mkdir /etc/containerd && containerd config default > /etc/containerd/config.toml
 nano /etc/containerd/config.toml
 
 [plugins."io.containerd.grpc.v1.cri".registry]

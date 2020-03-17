@@ -1,0 +1,1 @@
+openssl genrsa -out jenkins.key 4096 && openssl req -new -key jenkins.key -out jenkins.csr -subj "/CN=jenkins/O=aismv" && openssl x509 -req -in jenkins.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out jenkins.crt -days 3650

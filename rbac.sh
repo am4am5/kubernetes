@@ -2,3 +2,33 @@
 
 kubeadm alpha kubeconfig user --client-name=jenkins --apiserver-advertise-address 172.16.9.47 > jenkins.conf
 kubeadm alpha kubeconfig user --client-name=jenkins --apiserver-advertise-address 172.20.238.229 > jenkins.conf
+
+kubectl config set-context --current --namespace=aismv
+
+#jenkins role & rolebinding
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: aismv
+  name: jenkins
+rules:
+- apiGroups: ["", "extensions", "apps"]
+  resources: ["*"]
+  verbs: ["*"]
+  ---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: jenkins
+  namespace: aismv
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: jenkins
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: jenkins
+
+  
+  

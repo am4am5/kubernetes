@@ -1,6 +1,6 @@
 master:
 kubeadm upgrade plan
-kubeadm upgrade apply v1.17.4
+kubeadm upgrade apply v1.18.0
 systemctl daemon-reload
 systemctl restart kubelet
 systemctl status kubelet

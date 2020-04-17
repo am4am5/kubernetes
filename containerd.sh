@@ -1,7 +1,5 @@
 #Install
 wget https://storage.googleapis.com/cri-containerd-release/cri-containerd-1.3.4.linux-amd64.tar.gz && tar --no-overwrite-dir -C / -xzf cri-containerd-1.3.4.linux-amd64.tar.gz && rm -rf /opt/containerd && mkdir /etc/containerd && containerd config default > /etc/containerd/config.toml
-#Upgrade
-wget https://storage.googleapis.com/cri-containerd-release/cri-containerd-1.3.4.linux-amd64.tar.gz && tar --no-overwrite-dir -C / -xzf cri-containerd-1.3.4.linux-amd64.tar.gz && rm -rf /opt/containerd
 
 nano /etc/containerd/config.toml
 
@@ -15,8 +13,7 @@ nano /etc/containerd/config.toml
 [metrics]
   address = "127.0.0.1:9323"
 
-update:
-systemctl daemon-reload && systemctl restart containerd && systemctl status containerd
-
-install:
 systemctl enable --now containerd
+
+#Upgrade
+wget https://storage.googleapis.com/cri-containerd-release/cri-containerd-1.3.4.linux-amd64.tar.gz && tar --no-overwrite-dir -C / -xzf cri-containerd-1.3.4.linux-amd64.tar.gz && rm -rf /opt/containerd && systemctl daemon-reload && systemctl restart containerd && systemctl status containerd

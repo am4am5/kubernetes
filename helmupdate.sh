@@ -1,1 +1,1 @@
-wget https://get.helm.sh/helm-v3.2.0-linux-amd64.tar.gz && tar xvf helm-v3.2.0-linux-amd64.tar.gz && mv linux-amd64/helm /usr/bin/ && rm -rf linux-amd64/ https://get.helm.sh/helm-v3.2.0-linux-amd64.tar.gz
+wget https://get.helm.sh/helm-v3.2.0-linux-amd64.tar.gz && tar xvf helm-v3.2.0-linux-amd64.tar.gz && mv linux-amd64/helm /usr/bin/ && rm -rf linux-amd64/ https://get.helm.sh/helm-v3.2.0-linux-amd64.tar.gz && helm version

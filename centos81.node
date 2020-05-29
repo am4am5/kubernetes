@@ -6,6 +6,8 @@ dnf install -y epel-release centos-release-stream && dnf install -y nano htop nc
 
 echo "10.221.32.58 kubeworker6" >> /etc/hosts
 
+systemctl enable --now cockpit.socket
+
 systemctl disable --now firewalld kdump
 
 setenforce 0 && sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config

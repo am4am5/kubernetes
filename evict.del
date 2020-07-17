@@ -1,3 +1,2 @@
-kubectl get pods --all-namespaces -o json | jq '.items[] | select(.status.reason!=null) | select(.status.reason | contains("Evicted")) | "kubectl delete pods \(.metadata.name) -n \(.metadata.namespace)"' | xargs -n 1 bash -c
+kubectl delete po -A --field-selector=status.phase=Failed
 
-kubectl -n default delete pods --field-selector=status.phase=Evicted

@@ -1,0 +1,3 @@
+cd /etc/kubernetes/
+mv /etc/kubernetes/kubelet.conf /etc/kubernetes/kubelet.conf_
+kubeadm alpha kubeconfig user --org system:nodes --client-name system:node:$(hostname) > kubelet.conf

@@ -6,6 +6,6 @@ export LANG=ru_RU.UTF-8 \
 export LANGUAGE=ru_RU:ru \
 export LC_ALL=ru_RU.UTF8
 
-ENV LANG=ru_RU.UTF-8 \
-    LANGUAGE=ru_RU:ru \
-    LC_ALL=ru_RU.UTF8
+ENV LANG ru_RU.UTF-8 \
+    LANGUAGE ru_RU:ru \
+    LC_ALL ru_RU.UTF8

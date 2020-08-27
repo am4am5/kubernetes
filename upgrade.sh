@@ -1,6 +1,6 @@
 master:
 kubeadm upgrade plan
-kubeadm upgrade apply v1.18.8
+kubeadm upgrade apply v1.19.0
 systemctl daemon-reload && systemctl restart kubelet && systemctl status kubelet
 
 workers:

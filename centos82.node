@@ -1,10 +1,11 @@
 hostnamectl set-hostname kubeworker7
 
-dnf install chrony && systemctl enable --now chronyd
+dnf install -y chrony && systemctl enable --now chronyd
 
 dnf install -y epel-release centos-release-stream && dnf install -y nano htop ncdu wget tar telnet iproute-tc nfs-utils
 
-echo "10.221.32.58 kubeworker6" >> /etc/hosts
+echo "10.221.38.224 kubeworker7" >> /etc/hosts
+
 sed -i 's/172.20.240.181/10.221.35.86/' /etc/hosts
 
 systemctl enable --now cockpit.socket

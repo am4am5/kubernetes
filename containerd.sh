@@ -1,5 +1,5 @@
 #Install
-wget https://github.com/containerd/containerd/releases/download/v1.4.1/cri-containerd-cni-1.4.1-linux-amd64.tar.gz && tar --no-overwrite-dir -C / -xzf cri-containerd-cni-1.4.1-linux-amd64.tar.gz && rm -rf /opt/containerd && mkdir /etc/containerd && containerd config default > /etc/containerd/config.toml
+wget https://github.com/containerd/containerd/releases/download/v1.4.1/cri-containerd-cni-1.4.1-linux-amd64.tar.gz && tar --no-overwrite-dir -C / -xzf cri-containerd-cni-1.4.1-linux-amd64.tar.gz && rm -rf /opt/containerd && rm -f /etc/cni/net.d/10-containerd-net.conflist && mkdir /etc/containerd && containerd config default > /etc/containerd/config.toml
 
 nano /etc/containerd/config.toml
 [plugins."io.containerd.grpc.v1.cri".registry]
@@ -12,7 +12,8 @@ nano /etc/containerd/config.toml
 [metrics]
   address = "127.0.0.1:9323"
 
+
 systemctl enable --now containerd
 
 #Upgrade
-wget https://github.com/containerd/containerd/releases/download/v1.4.1/cri-containerd-cni-1.4.1-linux-amd64.tar.gz && tar --no-overwrite-dir -C / -xzf cri-containerd-cni-1.4.1-linux-amd64.tar.gz && rm -rf /opt/containerd && rm -f /etc/cni/net.d/10-cont* && systemctl daemon-reload && systemctl restart containerd && systemctl status containerd
+wget https://github.com/containerd/containerd/releases/download/v1.4.1/cri-containerd-cni-1.4.1-linux-amd64.tar.gz && tar --no-overwrite-dir -C / -xzf cri-containerd-cni-1.4.1-linux-amd64.tar.gz && rm -rf /opt/containerd && rm -f /etc/cni/net.d/10-containerd-net.conflist && systemctl daemon-reload && systemctl restart containerd && systemctl status containerd

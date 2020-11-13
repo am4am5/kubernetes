@@ -1,0 +1,1 @@
+cp -f /etc/kubernetes/admin.conf /root/kube/config

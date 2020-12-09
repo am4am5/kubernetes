@@ -12,6 +12,10 @@ nano /etc/containerd/config.toml
 [metrics]
   address = "127.0.0.1:9323"
 
+[debug]
+  level = "warn"
+systemctl restart containerd && systemctl status containerd  
+
 
 systemctl enable --now containerd
 

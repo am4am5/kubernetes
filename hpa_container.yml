@@ -1,0 +1,47 @@
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: mission-critical
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: mission-critical
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: ContainerResource
+    resource:
+      name: cpu
+      container: application
+      target:
+        type: Utilization
+        averageUtilization: 30
+  - type: ContainerResource
+    resource:
+      name: memory
+      container: application
+      target:
+        type: Utilization
+        averageUtilization: 80
+  - type: ContainerResource
+    resource:
+      name: cpu
+      container: authnz-proxy
+      target:
+        type: Utilization
+        averageUtilization: 30
+  - type: ContainerResource
+    resource:
+      name: memory
+      container: authnz-proxy
+      target:
+        type: Utilization
+        averageUtilization: 80
+  - type: ContainerResource
+    resource:
+      name: cpu
+      container: log-shipping
+      target:
+        type: Utilization
+        averageUtilization: 80

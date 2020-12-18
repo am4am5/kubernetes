@@ -20,4 +20,4 @@ systemctl restart containerd && systemctl status containerd
 systemctl enable --now containerd
 
 #Upgrade
-wget https://github.com/containerd/containerd/releases/download/v1.4.2/cri-containerd-cni-1.4.2-linux-amd64.tar.gz && tar --no-overwrite-dir -C / -xzf cri-containerd-cni-1.4.2-linux-amd64.tar.gz && rm -rf /opt/containerd /etc/cni/net.d/10-containerd-net.conflist cri-containerd-cni-1.4.2-linux-amd64.tar.gz && systemctl daemon-reload && systemctl restart containerd && systemctl status containerd
+wget https://github.com/containerd/containerd/releases/download/v1.4.3/cri-containerd-cni-1.4.3-linux-amd64.tar.gz && tar --no-overwrite-dir -C / -xzf cri-containerd-cni-1.4.3-linux-amd64.tar.gz && rm -rf /opt/containerd /etc/cni/net.d/10-containerd-net.conflist cri-containerd-cni-1.4.3-linux-amd64.tar.gz && systemctl daemon-reload && systemctl restart containerd && systemctl status containerd

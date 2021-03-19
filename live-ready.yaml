@@ -1,24 +1,21 @@
-livenessProbe:
-  httpGet:
-    path: /actuator/health
-    port: 8080
-    scheme: HTTP
-  initialDelaySeconds: 30
-  periodSeconds: 10
-  successThreshold: 1
-  timeoutSeconds: 3
-  failureThreshold: 3
-readinessProbe:
-  httpGet:
-    path: /actuator/health
-    port: 8080
-    scheme: HTTP
-  initialDelaySeconds: 30
-  periodSeconds: 10
-  successThreshold: 1
-  timeoutSeconds: 3
-  failureThreshold: 3
-
-
-imagePullSecrets:
-- name: registry-cred
+        livenessProbe:
+          timeoutSeconds: 3
+          httpGet:
+            path: /actuator/health
+            port: 8080
+            scheme: HTTP
+        startupProbe:
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 20
+          httpGet:
+            path: /actuator/health
+            port: 8080
+            scheme: HTTP
+        readinessProbe:
+          initialDelaySeconds: 10
+          timeoutSeconds: 3
+          httpGet:
+            path: /actuator/health
+            port: 8080
+            scheme: HTTP

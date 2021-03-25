@@ -1,0 +1,10 @@
+nano /etc/kubernetes/manifests/kube-apiserver.yaml
+
+Under here:
+spec:
+  containers:
+  - command:
+    - kube-apiserver
+
+Add this line:
+- --feature-gates=RemoveSelfLink=false

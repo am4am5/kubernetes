@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: nginx
+spec:
+  controller: k8s.io/ingress-nginx
+[root@kubemaster1 ~]# cat ingress.yml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: system-monitor-grafana
+  namespace: monitor
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: grafana.edo.iba
+    http:
+      paths:
+      - backend:
+          service:
+            name: system-monitor-grafana
+            port:
+              number: 3000
+        pathType: ImplementationSpecific

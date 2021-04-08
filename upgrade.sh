@@ -1,5 +1,5 @@
 master:
-dnf -y update --nobest && kubeadm upgrade plan && kubeadm upgrade apply v1.20.5
+dnf -y update --nobest && kubeadm upgrade plan && kubeadm upgrade apply v1.21.0
 systemctl daemon-reload && systemctl restart kubelet && systemctl status kubelet
 
 workers:

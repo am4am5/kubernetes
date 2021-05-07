@@ -1,0 +1,1 @@
+- --feature-gates=ServerSideApply=false

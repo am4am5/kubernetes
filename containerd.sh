@@ -11,6 +11,12 @@ nano /etc/containerd/config.toml
         [plugins."io.containerd.grpc.v1.cri".registry.mirrors."registry.edo.iba"]
           endpoint = ["https://registry.edo.iba"]
           
+# X.509 fix 
+        [plugins."io.containerd.grpc.v1.cri".registry.configs]
+          [plugins."io.containerd.grpc.v1.cri".registry.configs."registry.edo.iba".tls]
+            insecure_skip_verify = true
+
+
 [metrics]
   address = "127.0.0.1:9323"
 

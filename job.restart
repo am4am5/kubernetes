@@ -1,0 +1,1 @@
+kubectl get job -n gitlab "gtb-scm-gitlab-migrations-1" -o json | kubectl replace -n gitlab --force -f -

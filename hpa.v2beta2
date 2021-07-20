@@ -1,0 +1,1 @@
+k get hpa.v2beta2.autoscaling -oyaml aismv-back-edms

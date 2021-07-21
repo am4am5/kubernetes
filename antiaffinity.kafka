@@ -27,3 +27,17 @@ template:
                     operator: In
                     values:
                     - zookeeper
+
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app 
+                  operator: In
+                  values:
+                  - gtb-back-edms
+              topologyKey: kubernetes.io/hostname
+            weight: 100

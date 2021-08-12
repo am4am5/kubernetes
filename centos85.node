@@ -1,14 +1,18 @@
+nano .bashrc
+
 hostnamectl set-hostname kubeworker9
 
 dnf install -y chrony && systemctl enable --now chronyd
 
 dnf install -y epel-release centos-release-stream && dnf install -y nano htop ncdu wget tar telnet iproute-tc nfs-utils
 
-echo "10.221.38.224 kubeworker7" >> /etc/hosts
+echo "10.221.32.233 kubeworker9" >> /etc/hosts
+echo "10.221.32.159 kubeworker10" >> /etc/hosts
+echo "10.221.38.224 kubeworker11" >> /etc/hosts
 
-sed -i 's/172.20.240.181/10.221.35.86/' /etc/hosts
+# sed -i 's/172.20.240.181/10.221.35.86/' /etc/hosts
 
-systemctl enable --now cockpit.socket
+# systemctl enable --now cockpit.socket
 
 systemctl disable --now firewalld kdump
 
@@ -25,7 +29,7 @@ sysctl --system
 
 echo "1" > /proc/sys/net/ipv4/ip_forward
 
-echo "alias u='dnf update'" >> .bashrc
+# echo "alias u='dnf update'" >> .bashrc
 echo "modprobe br_netfilter" >> .bashrc
 lsmod | grep netfilter
 

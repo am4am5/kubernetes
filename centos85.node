@@ -1,4 +1,4 @@
-hostnamectl set-hostname kubeworker8
+hostnamectl set-hostname kubeworker9
 
 dnf install -y chrony && systemctl enable --now chronyd
 

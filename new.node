@@ -58,6 +58,6 @@ kubeadm init --pod-network-cidr=10.244.0.0/16
 kubeadm token create --print-join-command
 
 #Fedora swap disable
-systemctl disable --now swap-create@zram0
+dnf remove -y zram-generator-defaults && reboot
 
 echo "172.16.9.46 grafana.edo.iba gitlab.edo.iba registry2.edo.iba minio2.edo.iba minio.edo.iba edms.edo.iba gtb.edo.iba" >> /etc/hosts

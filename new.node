@@ -1,16 +1,12 @@
-nano .bashrc
-
-# echo "alias u='dnf update'" >> .bashrc
-
-hostnamectl set-hostname kubeworker9
+dnf install -y epel-release && dnf install -y nano htop ncdu wget tar telnet iproute-tc nfs-utils
 
 dnf install -y chrony && systemctl enable --now chronyd
 
-dnf install -y epel-release centos-release-stream && dnf install -y nano htop ncdu wget tar telnet iproute-tc nfs-utils
+nano .bashrc
 
-echo "10.221.32.233 kubeworker9" >> /etc/hosts
-echo "10.221.32.159 kubeworker10" >> /etc/hosts
-echo "10.221.38.224 kubeworker11" >> /etc/hosts
+echo "alias u='dnf update'" >> .bashrc
+
+hostnamectl set-hostname kubeworker9
 
 # sed -i 's/172.20.240.181/10.221.35.86/' /etc/hosts
 

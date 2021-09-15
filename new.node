@@ -1,3 +1,18 @@
+ssh admin@192.168.249.23
+sudo su -
+passwd root
+
+nano /etc/ssh/sshd_config
+#root login
+systemctl restart sshd
+
+ssh-copy-id root@192.168.249.21
+
+scp cri-containerd-cni-1.5.5-linux-amd64.tar.gz root@192.168.249.22:/root/
+
+
+
+
 dnf install -y epel-release && dnf install -y nano htop ncdu wget tar telnet iproute-tc nfs-utils
 
 dnf install -y chrony && systemctl enable --now chronyd

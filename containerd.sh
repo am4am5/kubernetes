@@ -13,5 +13,8 @@ nano /etc/containerd/config.toml
 
 systemctl enable --now containerd && systemctl status containerd
 
+echo "192.168.249.20 registry.gtb.local" >> /etc/hosts
+
+
 #Upgrade
 wget https://github.com/containerd/containerd/releases/download/v1.5.5/cri-containerd-cni-1.5.5-linux-amd64.tar.gz && tar --no-overwrite-dir -C / -xzf cri-containerd-cni-1.5.5-linux-amd64.tar.gz && rm -rf /opt/containerd /etc/cni/net.d/10-containerd-net.conflist cri-containerd-cni-1.5.5-linux-amd64.tar.gz && systemctl daemon-reload && systemctl restart containerd && systemctl status containerd

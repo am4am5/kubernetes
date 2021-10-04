@@ -6,11 +6,15 @@ nano /etc/ssh/sshd_config
 #root login
 systemctl restart sshd
 
-ssh-copy-id root@192.168.249.21
+ssh-copy-id root@192.168.249.20-28
 
-scp cri-containerd-cni-1.5.5-linux-amd64.tar.gz root@192.168.249.22:/root/
+scp cri-containerd-cni-1.5.5-linux-amd64.tar.gz root@192.168.249.20-28:/root/
 
+scp kube.7z root@192.168.249.20-28:/root/
 
+apt-get install p7zip
+
+7z e kube.7z && mv kubeadm kubectl kubelet /usr/bin/ && mv kubelet.service /usr/lib/systemd/system/ && systemctl daemon-reload && systemctl enable --now kubelet && systemctl status kubelet
 
 
 dnf install -y epel-release && dnf install -y nano htop ncdu wget tar telnet iproute-tc nfs-utils

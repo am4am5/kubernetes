@@ -16,14 +16,18 @@ apt-get install p7zip
 
 7z e kube.7z && mv kubeadm kubectl kubelet /usr/bin/ && mv kubelet.service /usr/lib/systemd/system/ && systemctl daemon-reload && systemctl enable --now kubelet && systemctl status kubelet
 
+apt-get install -y socat conntrack-tools
 
-dnf install -y epel-release && dnf install -y nano htop ncdu wget tar telnet iproute-tc nfs-utils
+echo "1" > /proc/sys/net/ipv4/ip_forward
 
-dnf install -y chrony && systemctl enable --now chronyd
 
-nano .bashrc
+#dnf install -y epel-release && dnf install -y nano htop ncdu wget tar telnet iproute-tc nfs-utils
 
-echo "alias u='dnf update'" >> .bashrc
+#dnf install -y chrony && systemctl enable --now chronyd
+
+#nano .bashrc
+
+echo "alias u='apt-get update'" >> .bashrc
 
 hostnamectl set-hostname kubeworker9
 
@@ -51,7 +55,6 @@ sysctl --system
 
 modprobe overlay && modprobe br_netfilter
 
-echo "1" > /proc/sys/net/ipv4/ip_forward
 
 #containerd
           

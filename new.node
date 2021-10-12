@@ -20,6 +20,7 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
 
 mkdir /lib/systemd/system/kubelet.service.d
 nano /lib/systemd/system/kubelet.service.d/10-kubeadm.conf
+nano /var/lib/kubelet/kubeadm-flags.env
 systemctl daemon-reload && systemctl restart kubelet && systemctl status kubelet
 
 

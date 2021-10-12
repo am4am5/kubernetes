@@ -15,12 +15,28 @@ scp kube.7z root@192.168.249.20-28:/root/
 apt-get install p7zip
 7z e kube.7z && mv kubeadm kubectl kubelet /usr/bin/ && mv kubelet.service /usr/lib/systemd/system/ && systemctl daemon-reload && systemctl enable --now kubelet && systemctl status kubelet
 
+rm /etc/machine-id && systemd-machine-id-setup
+
 apt-get install -y socat conntrack-tools
 echo "1" > /proc/sys/net/ipv4/ip_forward
 
 mkdir /lib/systemd/system/kubelet.service.d
 nano /lib/systemd/system/kubelet.service.d/10-kubeadm.conf
+# Note: This dropin only works with kubeadm and kubelet v1.11+
+[Service]
+Environment="KUBELET_KUBECONFIG_ARGS=--bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf"
+Environment="KUBELET_CONFIG_ARGS=--config=/var/lib/kubelet/config.yaml"
+# This is a file that "kubeadm init" and "kubeadm join" generates at runtime, populating the KUBELET_KUBEADM_ARGS variable dynamically
+EnvironmentFile=-/var/lib/kubelet/kubeadm-flags.env
+# This is a file that the user can use for overrides of the kubelet args as a last resort. Preferably, the user should use
+# the .NodeRegistration.KubeletExtraArgs object in the configuration files instead. KUBELET_EXTRA_ARGS should be sourced from this file.
+EnvironmentFile=-/etc/sysconfig/kubelet
+ExecStart=
+ExecStart=/usr/bin/kubelet $KUBELET_KUBECONFIG_ARGS $KUBELET_CONFIG_ARGS $KUBELET_KUBEADM_ARGS $KUBELET_EXTRA_ARGS
+
 nano /var/lib/kubelet/kubeadm-flags.env
+KUBELET_KUBEADM_ARGS="--container-runtime=remote --container-runtime-endpoint=/run/containerd/containerd.sock --pod-infra-container-image=k8s.gcr.io/pause:3.5"
+
 systemctl daemon-reload && systemctl restart kubelet && systemctl status kubelet
 
 kubeadm --v=5 join 192.168.249.20:6443 --token slxa40.tjnrkssaz8r1d1k0 --discovery-token-ca-cert-hash sha256:e752b4679a3a5d76ffc3ac1889da519253576aeb8aad7b788fb9f1f2e0271167

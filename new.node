@@ -18,8 +18,8 @@ apt-get install p7zip
 # Change Machine ID
 rm -f /etc/machine-id /var/lib/dbus/machine-id && systemd-machine-id-setup && cp -f /etc/machine-id /var/lib/dbus/machine-id && hostnamectl
 
-apt-get install -y socat conntrack-tools
-echo "1" > /proc/sys/net/ipv4/ip_forward
+# Kube Req
+apt-get install -y socat conntrack-tools && echo "1" > /proc/sys/net/ipv4/ip_forward
 
 mkdir /lib/systemd/system/kubelet.service.d
 nano /lib/systemd/system/kubelet.service.d/10-kubeadm.conf

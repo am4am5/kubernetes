@@ -15,7 +15,7 @@ scp kube.7z root@192.168.249.20-28:/root/
 apt-get install p7zip
 7z e kube.7z && mv kubeadm kubectl kubelet /usr/bin/ && mv kubelet.service /usr/lib/systemd/system/ && systemctl daemon-reload && systemctl enable --now kubelet && systemctl status kubelet
 
-rm /etc/machine-id && systemd-machine-id-setup
+rm -f /etc/machine-id && systemd-machine-id-setup
 
 apt-get install -y socat conntrack-tools
 echo "1" > /proc/sys/net/ipv4/ip_forward

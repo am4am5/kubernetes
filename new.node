@@ -23,6 +23,7 @@ nano /lib/systemd/system/kubelet.service.d/10-kubeadm.conf
 nano /var/lib/kubelet/kubeadm-flags.env
 systemctl daemon-reload && systemctl restart kubelet && systemctl status kubelet
 
+kubeadm --v=5 join 192.168.249.20:6443 --token slxa40.tjnrkssaz8r1d1k0 --discovery-token-ca-cert-hash sha256:e752b4679a3a5d76ffc3ac1889da519253576aeb8aad7b788fb9f1f2e0271167
 
 
 #dnf install -y epel-release && dnf install -y nano htop ncdu wget tar telnet iproute-tc nfs-utils

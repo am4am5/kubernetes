@@ -13,12 +13,15 @@ scp cri-containerd-cni-1.5.5-linux-amd64.tar.gz root@192.168.249.20-28:/root/
 scp kube.7z root@192.168.249.20-28:/root/
 
 apt-get install p7zip
-
 7z e kube.7z && mv kubeadm kubectl kubelet /usr/bin/ && mv kubelet.service /usr/lib/systemd/system/ && systemctl daemon-reload && systemctl enable --now kubelet && systemctl status kubelet
 
 apt-get install -y socat conntrack-tools
-
 echo "1" > /proc/sys/net/ipv4/ip_forward
+
+mkdir /lib/systemd/system/kubelet.service.d
+nano /lib/systemd/system/kubelet.service.d/10-kubeadm.conf
+systemctl daemon-reload && systemctl restart kubelet && systemctl status kubelet
+
 
 
 #dnf install -y epel-release && dnf install -y nano htop ncdu wget tar telnet iproute-tc nfs-utils

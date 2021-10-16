@@ -44,7 +44,7 @@ systemctl daemon-reload && systemctl restart kubelet && systemctl status kubelet
 
 kubeadm --v=5 join 192.168.249.20:6443 --token slxa40.tjnrkssaz8r1d1k0 --discovery-token-ca-cert-hash sha256:e752b4679a3a5d76ffc3ac1889da519253576aeb8aad7b788fb9f1f2e0271167
 
-sed -i 's/beltg-28-kubm01/gitlab.gtb.local registry.gtb.local minio.gtb.local beltg-28-kubm01/' /etc/hosts
+sed -i 's/registry.gtb.local beltg-28-kubm01/gitlab.gtb.local registry.gtb.local minio.gtb.local beltg-28-kubm01/' /etc/hosts
 
 
 #dnf install -y epel-release && dnf install -y nano htop ncdu wget tar telnet iproute-tc nfs-utils

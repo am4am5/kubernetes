@@ -21,6 +21,8 @@ rm -f /etc/machine-id /var/lib/dbus/machine-id && systemd-machine-id-setup && cp
 # Kube Req
 apt-get install -y socat conntrack-tools && echo "1" > /proc/sys/net/ipv4/ip_forward
 
+echo "net.bridge.bridge-nf-call-iptables=1" | sudo tee -a /etc/sysctl.conf && sysctl -p
+
 mkdir /lib/systemd/system/kubelet.service.d
 nano /lib/systemd/system/kubelet.service.d/10-kubeadm.conf
 # Note: This dropin only works with kubeadm and kubelet v1.11+

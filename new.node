@@ -46,7 +46,7 @@ kubeadm --v=5 join 192.168.249.20:6443 --token slxa40.tjnrkssaz8r1d1k0 --discove
 
 sed -i 's/registry.gtb.local beltg-28-kubm01/gitlab.gtb.local registry.gtb.local minio.gtb.local beltg-28-kubm01/' /etc/hosts
 
-sed -i 's/gtb.local/btg.local/' /etc/hosts
+sed -i 's/gtb.local/btg.local/g' /etc/hosts
 
 
 #dnf install -y epel-release && dnf install -y nano htop ncdu wget tar telnet iproute-tc nfs-utils

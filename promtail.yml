@@ -240,11 +240,11 @@ config:
   # @default -- See `values.yaml`
   snippets:
     pipelineStages:
+      - docker: {}
+      - drop:
+          expression: ".*(error).*(filetarget.go).*(no such file).*"
       - cri: {}
     common:
-      - action: drop
-        expression: 
-          - ".*(error).*(filetarget.go).*(no such file).*"
       - action: replace
         source_labels:
           - __meta_kubernetes_pod_node_name

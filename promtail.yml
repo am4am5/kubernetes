@@ -242,11 +242,23 @@ config:
     pipelineStages:
       - docker: {}
       - drop:
-          expression: ".*(error).*(filetarget.go).*(no such file).*"
+          expression: ".*(error).*(filetarget.go).*"
       - drop:
-          expression: ".*(info).*(table_manager.go).*(creating table).*"
+          expression: ".*(info).*(table_manager.go).*"
       - drop:
-          expression: ".*(info).*(table.go).*" 
+          expression: ".*(info).*(table.go).*"
+      - drop:
+          expression: ".*(info).*(compactor.go).*"
+      - drop:
+          expression: ".*(info).*(checkpoint.go).*"
+      - drop:
+          expression: ".*(info).*(util.go).*" 
+      - drop:
+          expression: ".*(eror).*(Failed to look up user based on cookie).*"
+      - drop:
+          expression: ".*(warn).*(Request Origin is not authorized).*"
+      - drop:
+          expression: ".*(info).*(Request Completed).*"
       - cri: {}
     common:
       - action: replace

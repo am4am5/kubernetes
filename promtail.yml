@@ -243,6 +243,9 @@ config:
       - docker: {}
       - drop:
           expression: ".*(error).*(filetarget.go).*(no such file).*"
+      - loki: {}
+      - drop:
+          expression: ".*(info).*(table_manager.go).*(creating table).*"
       - cri: {}
     common:
       - action: replace

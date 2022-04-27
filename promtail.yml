@@ -245,6 +245,8 @@ config:
           expression: ".*(error).*(filetarget.go).*(no such file).*"
       - drop:
           expression: ".*(info).*(table_manager.go).*(creating table).*"
+      - drop:
+          expression: ".*(info).*(table.go).*" 
       - cri: {}
     common:
       - action: replace

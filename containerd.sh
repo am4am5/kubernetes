@@ -10,9 +10,9 @@ nano /etc/containerd/config.toml
         insecure_skip_verify = true
 
     [plugins."io.containerd.grpc.v1.cri".registry]
-      [plugins."io.containerd.grpc.v1.cri".registry.mirrors."registry2.edo.iba"]
-        endpoint = ["https://registry2.edo.iba"]
-      [plugins."io.containerd.grpc.v1.cri".registry.configs."registry2.edo.iba".tls]
+      [plugins."io.containerd.grpc.v1.cri".registry.mirrors."registry.edo.iba"]
+        endpoint = ["https://registry.edo.iba"]
+      [plugins."io.containerd.grpc.v1.cri".registry.configs."registry.edo.iba".tls]
         insecure_skip_verify = true
 
 [debug]

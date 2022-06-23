@@ -10,19 +10,18 @@ minikube config view
 minikube start
 
 #systemd
-/usr/lib/systemd/system/minikube.service
-
+cat <<EOF > /usr/lib/systemd/system/minikube.service
 [Unit]
 Description=minikube
-
+After=network.target local-fs.target containerd.service
 [Service]
 Type=oneshot
 RemainAfterExit=yes
 WorkingDirectory=/root
 ExecStart=/usr/bin/minikube start
 ExecStop=/usr/bin/minikube stop
-
 [Install]
 WantedBy=multi-user.target
+EOF
 
 systemctl daemon-reload && systemctl enable --now minikube

@@ -4,16 +4,7 @@ dnf install https://github.com/kubernetes/minikube/releases/download/v1.26.0/min
 
 minikube config --help
 
-minikube config set driver podman
-minikube config set container-runtime containerd
-minikube config set network-plugin cni
-minikube config set enable-default-cni
-minikube config set bootstrapper kubeadm
-minikube config set memory max
-minikube config set cpus max
-minikube config set listen-address '0.0.0.0'
-minikube config set insecure-registry '10.0.0.0/24'
-
+minikube config set driver podman && minikube config set container-runtime containerd && minikube config set network-plugin cni && minikube config set enable-default-cni && minikube config set bootstrapper kubeadm && minikube config set memory max && minikube config set cpus max && minikube config set listen-address '0.0.0.0' && minikube config set insecure-registry '10.0.0.0/24'
 minikube config view
 
 minikube start

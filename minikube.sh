@@ -30,3 +30,9 @@ EOF
 systemctl daemon-reload && systemctl enable --now minikube
 
 minikube status
+
+#addons
+minikube addons list
+minikube addons enable ingress
+minikube addons enable metrics-server
+minikube addons enable csi-hostpath-driver

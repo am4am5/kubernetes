@@ -1,3 +1,5 @@
+k edit deploy -n monitor system-monitor-metrics
+
 - name: metrics-server
         image: k8s.gcr.io/metrics-server-amd64:v0.3.1
         command:

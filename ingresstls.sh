@@ -30,5 +30,8 @@ openssl x509 -req -extensions v3_req -days 3650 -in tls.csr -signkey tls.key -ou
 
 kubectl -n dev create secret tls edo-tls --key tls.key --cert tls.crt
 
-  annotations:
+k edit deploy ingress-nginx-controller
+        - --default-ssl-certificate=dev/edo-tls
+
+annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"

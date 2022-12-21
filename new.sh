@@ -6,3 +6,5 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documen
 
 kubeadm token create --print-join-command
 
+#1node taint:
+kubectl taint node mdastend node-role.kubernetes.io/control-plane:NoSchedule-

@@ -1,6 +1,5 @@
 #Install
-wget https://github.com/containerd/containerd/releases/download/v1.6.6/cri-containerd-cni-1.6.6-linux-amd64.tar.gz && tar --no-overwrite-dir -C / -xzf cri-containerd-cni-1.6.6-linux-amd64.tar.gz && rm -rf /opt/containerd cri-containerd-cni-1.6.6-linux-amd64.tar.gz /etc/cni/net.d/10-containerd-net.conflist && mkdir /etc/containerd && containerd config default > /etc/containerd/config.toml
-wget https://github.com/containerd/containerd/releases/download/v1.6.6/cri-containerd-cni-1.6.6-linux-amd64.tar.gz && tar --no-overwrite-dir -C / -xzf cri-containerd-cni-1.6.6-linux-amd64.tar.gz && rm -rf /opt/containerd cri-containerd-cni-1.6.6-linux-amd64.tar.gz && mkdir /etc/containerd && containerd config default > /etc/containerd/config.toml
+wget https://github.com/containerd/containerd/releases/download/v1.6.14/cri-containerd-cni-1.6.14-linux-amd64.tar.gz && tar --no-overwrite-dir -C / -xzf cri-containerd-cni-1.6.14-linux-amd64.tar.gz && rm -rf /opt/containerd cri-containerd-cni-1.6.14-linux-amd64.tar.gz /etc/cni/net.d/10-containerd-net.conflist && mkdir /etc/containerd && containerd config default > /etc/containerd/config.toml
 
 nano /etc/containerd/config.toml
     [plugins."io.containerd.grpc.v1.cri".registry]
@@ -25,4 +24,4 @@ echo "192.168.249.20 registry.gtb.local" >> /etc/hosts
 rm -f /etc/cni/net.d/87-podman-bridge.conflist
 
 #Upgrade
-wget https://github.com/containerd/containerd/releases/download/v1.5.8/cri-containerd-cni-1.5.8-linux-amd64.tar.gz && tar --no-overwrite-dir -C / -xzf cri-containerd-cni-1.5.8-linux-amd64.tar.gz && rm -rf /opt/containerd /etc/cni/net.d/10-containerd-net.conflist cri-containerd-cni-1.5.8-linux-amd64.tar.gz && systemctl daemon-reload && systemctl restart containerd && systemctl status containerd
+wget https://github.com/containerd/containerd/releases/download/v1.6.16/cri-containerd-cni-1.6.16-linux-amd64.tar.gz && tar --no-overwrite-dir -C / -xzf cri-containerd-cni-1.6.16-linux-amd64.tar.gz && rm -rf /opt/containerd /etc/cni/net.d/10-containerd-net.conflist cri-containerd-cni-1.6.16-linux-amd64.tar.gz && systemctl daemon-reload && systemctl restart containerd && systemctl status containerd

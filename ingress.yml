@@ -4,7 +4,8 @@ metadata:
   name: nginx
 spec:
   controller: k8s.io/ingress-nginx
-[root@kubemaster1 ~]# cat ingress.yml
+
+#ingress.yml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:

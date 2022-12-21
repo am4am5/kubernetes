@@ -24,4 +24,4 @@ echo "192.168.249.20 registry.gtb.local" >> /etc/hosts
 rm -f /etc/cni/net.d/87-podman-bridge.conflist
 
 #Upgrade
-wget https://github.com/containerd/containerd/releases/download/v1.6.16/cri-containerd-cni-1.6.16-linux-amd64.tar.gz && tar --no-overwrite-dir -C / -xzf cri-containerd-cni-1.6.16-linux-amd64.tar.gz && rm -rf /opt/containerd /etc/cni/net.d/10-containerd-net.conflist cri-containerd-cni-1.6.16-linux-amd64.tar.gz && systemctl daemon-reload && systemctl restart containerd && systemctl status containerd
+wget https://github.com/containerd/containerd/releases/download/v1.6.14/cri-containerd-cni-1.6.14-linux-amd64.tar.gz && tar --no-overwrite-dir -C / -xzf cri-containerd-cni-1.6.14-linux-amd64.tar.gz && rm -rf /opt/containerd /etc/cni/net.d/10-containerd-net.conflist cri-containerd-cni-1.6.14-linux-amd64.tar.gz && systemctl daemon-reload && systemctl restart containerd && systemctl status containerd

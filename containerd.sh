@@ -1,5 +1,6 @@
 #Install
 wget https://github.com/containerd/containerd/releases/download/v1.7.1/cri-containerd-cni-1.7.1-linux-amd64.tar.gz && tar --no-overwrite-dir -C / -xzf cri-containerd-cni-1.7.1-linux-amd64.tar.gz && rm -rf /opt/containerd cri-containerd-cni-1.7.1-linux-amd64.tar.gz /etc/cni/net.d/10-containerd-net.conflist && mkdir /etc/containerd && containerd config default > /etc/containerd/config.toml
+wget https://github.com/containerd/containerd/releases/download/v1.6.21/cri-containerd-cni-1.6.21-linux-amd64.tar.gz && tar --no-overwrite-dir -C / -xzf cri-containerd-cni-1.6.21-linux-amd64.tar.gz && rm -rf /opt/containerd cri-containerd-cni-1.6.21-linux-amd64.tar.gz /etc/cni/net.d/10-containerd-net.conflist && mkdir /etc/containerd && containerd config default > /etc/containerd/config.toml
 
 nano /etc/containerd/config.toml
     [plugins."io.containerd.grpc.v1.cri".registry]

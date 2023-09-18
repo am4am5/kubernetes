@@ -72,7 +72,7 @@ kubectl edit cm -n kube-system kubeadm-config
 ClusterConfiguration: |
     apiServer:
       certSANs:
-      - api.k8s.local
+      - edo.iba
       - edostend
       - 10.16.64.43 
 

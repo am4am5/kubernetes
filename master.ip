@@ -1,0 +1,78 @@
+#0. 
+oldip=10.224.32.36
+newip=10.16.64.43
+
+#1.Find and replace the APIServer address of all configuration files in /etc/kubernetes
+cd /etc/kubernetes 
+find . -type f | xargs grep $oldip
+find . -type f | xargs sed -i "s/$oldip/$newip/"
+# /etc/kubernetes/manifests/kube-apiserver.yaml:    kubeadm.kubernetes.io/kube-apiserver.advertise-address.endpoint: 10.224.32.36:6443
+# /etc/kubernetes/manifests/kube-apiserver.yaml:    - --advertise-address=10.224.32.36
+# /etc/kubernetes/manifests/kube-apiserver.yaml:        host: 10.224.32.36
+# /etc/kubernetes/manifests/kube-apiserver.yaml:        host: 10.224.32.36
+# /etc/kubernetes/manifests/kube-apiserver.yaml:        host: 10.224.32.36
+# /etc/kubernetes/manifests/etcd.yaml:    kubeadm.kubernetes.io/etcd.advertise-client-urls: https://10.224.32.36:2379
+# /etc/kubernetes/manifests/etcd.yaml:    - --advertise-client-urls=https://10.224.32.36:2379
+# /etc/kubernetes/manifests/etcd.yaml:    - --initial-advertise-peer-urls=https://10.224.32.36:2380
+# /etc/kubernetes/manifests/etcd.yaml:    - --initial-cluster=edostend=https://10.224.32.36:2380
+# /etc/kubernetes/manifests/etcd.yaml:    - --listen-client-urls=https://127.0.0.1:2379,https://10.224.32.36:2379
+# /etc/kubernetes/manifests/etcd.yaml:    - --listen-peer-urls=https://10.224.32.36:2380
+# /etc/kubernetes/admin.conf:    server: https://10.224.32.36:6443
+# /etc/kubernetes/kubelet.conf:    server: https://10.224.32.36:6443
+# /etc/kubernetes/controller-manager.conf:    server: https://10.224.32.36:6443
+# /etc/kubernetes/scheduler.conf:    server: https://10.224.32.36:6443
+
+#2.Identify the certificate in /etc/kubernetes/pki that has the old IP address as the alt name
+cd /etc/kubernetes/pki
+for f in $(find -name "*.crt"); do
+openssl x509 -in $f -text -noout > $f.txt;
+done
+
+grep -Rl $oldip
+# etcd/server.crt.txt
+# etcd/peer.crt.txt
+# apiserver.crt.txt
+
+for f in $(find -name "*.crt"); do rm $f.txt; done
+
+#3.Find the ConfigMap in the kube-system namespace that references the old IP
+configmaps=$(kubectl -n kube-system get cm -o name | \
+awk '{print $1}' | \
+cut -d '/' -f 2)
+
+tdir=$(mktemp -d)
+
+for cf in $configmaps; do
+kubectl -n kube-system get cm $cf -o yaml > $tdir/$cf.yaml
+done
+
+grep -Hn $tdir/* -e $oldip
+
+kubectl -n kube-system edit cm kubeadm-config
+kubectl -n kube-system edit cm kube-proxy
+
+#4.Regenerate certs
+? kubeadm init phase certs all
+
+kubeadm certs check-expiration
+kubeadm certs renew
+
+#5. Regenerate *.conf
+? kubeadm init phase kubeconfig all
+
+cp /etc/kubernetes/admin.conf $HOME/.kube/config
+
+#6. Restart
+systemctl restart containerd
+systemctl restart kubelet
+
+#7. Before
+? kubeadm config print init-defaults
+kubectl edit cm -n kube-system kubeadm-config
+ClusterConfiguration: |
+    apiServer:
+      certSANs:
+      - api.k8s.local
+      - edostend
+      - 10.16.64.43 
+

@@ -1,1 +1,1 @@
-k create secret tls nasb --cert=/root/nasb.lan.crt --key=/root/nasb.lan.key
+k -n ingress create secret tls btg-local --cert=/root/2023.crt --key=/root/2023.key

@@ -1,1 +1,1 @@
-wget https://get.helm.sh/helm-v3.7.0-linux-amd64.tar.gz && tar xvf helm-v3.7.0-linux-amd64.tar.gz && mv -f linux-amd64/helm /usr/local/bin/ && rm -rf linux-amd64/ && helm version
+H_VER=3.13.3 && wget https://get.helm.sh/helm-$v{H_VER}-linux-amd64.tar.gz && tar xvf helm-$v{H_VER}-linux-amd64.tar.gz && mv -f linux-amd64/helm /usr/local/bin/ && rm -rf linux-amd64/ && helm version

@@ -2,6 +2,9 @@
 
 k -n kube-system get cm kubeadm-config -oyaml > kubeadm-config.yml
 k -n kube-system get cm kubelet-config -oyaml > kubelet-config.yml
+
+openssl x509 -in /var/lib/kubelet/pki/kubelet-client-current.pem -text | grep Validity -A2
+
 kubeadm kubeconfig user --org system:nodes --client-name system:node:$(hostname) > kubelet.conf
 
 kubeadm init phase kubeconfig kubelet

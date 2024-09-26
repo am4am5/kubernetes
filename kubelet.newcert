@@ -1,3 +1,6 @@
 # cd /etc/kubernetes/ && mv /etc/kubernetes/kubelet.conf /etc/kubernetes/kubelet.conf_ && kubeadm alpha kubeconfig user --org system:nodes --client-name system:node:$(hostname) > kubelet.conf
 
+k -n kube-system get cm kubeadm-config -oyaml > kubeadm-config
+k -n kube-system get cm kubelet-config -oyaml > kubelet-config
+
 kubeadm init phase kubeconfig kubelet

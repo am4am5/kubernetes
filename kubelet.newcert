@@ -11,3 +11,5 @@ kubeadm kubeconfig user --org system:nodes --client-name system:node:$(hostname)
 kubeadm init phase kubeconfig kubelet
 
 #kubeadm join phase kubelet-start
+
+copy the contents of /etc/kubernetes/admin.conf specifically the keys client-certificate-data and client-key-data and paste those new strings into the file /etc/kubernetes/kubelet.conf under the same keys

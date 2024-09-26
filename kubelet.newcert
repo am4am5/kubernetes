@@ -4,7 +4,7 @@ k -n kube-system get cm kubeadm-config -oyaml > kubeadm-config.yml
 k -n kube-system get cm kubelet-config -oyaml > kubelet-config.yml
 
 openssl x509 -in /var/lib/kubelet/pki/kubelet-client-current.pem -text | grep Validity -A2
-cat /etc/kubernetes/kubelet.conf | grep client-certificate-data | cut -f2 -d : | tr -d ' ' | base64 -d | openssl x509 -text -out - | grep "Not After"
+cat /etc/kubernetes/kubelet.conf | grep client-certificate-data | cut -f2 -d : | tr -d ' ' | base64 -d | openssl x509 -text -out - | grep Validity -A2
 
 kubeadm kubeconfig user --org system:nodes --client-name system:node:$(hostname) > kubelet.conf
 

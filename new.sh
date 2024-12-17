@@ -5,7 +5,7 @@ kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-cert-extra-sans=localh
 kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.92.254 --control-plane-endpoint=192.168.92.254 --node-name=nansed --apiserver-cert-extra-sans=localhost,127.0.0.1,192.168.92.254,80.94.169.171
 
 
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
 
 kubeadm token create --print-join-command
 

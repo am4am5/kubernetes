@@ -91,16 +91,21 @@ modprobe overlay && modprobe br_netfilter
 cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
-baseurl=https://pkgs.k8s.io/core:/stable:/v1.31/rpm/
+baseurl=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/
 enabled=1
 gpgcheck=1
-gpgkey=https://pkgs.k8s.io/core:/stable:/v1.31/rpm/repodata/repomd.xml.key
+gpgkey=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/repodata/repomd.xml.key
 EOF
 
-dnf install -y kubelet kubeadm kubectl && systemctl enable --now kubelet
+dnf install -y kubelet kubeadm kubectl cri-tools && systemctl enable --now kubelet
 
 #newmaster
-kubeadm init --pod-network-cidr=10.244.0.0/16
+kubeadm init --pod-network-cidr=10.244.0.0/16 
+
+mkdir .kube && cp /etc/kubernetes/super-admin.conf .kube/config
+
+kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+
 #oldmaster
 kubeadm token create --print-join-command
 

@@ -1,0 +1,1 @@
+k patch cj backup-next-db-edms -p '{"spec" : {"suspend" : true }}'

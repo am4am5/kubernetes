@@ -107,7 +107,7 @@ gpgcheck=1
 gpgkey=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/repodata/repomd.xml.key
 EOF
 
-dnf install -y kubelet kubeadm kubectl cri-tools && systemctl enable --now kubelet
+dnf install -y kubelet kubeadm kubectl cri-tools runc && systemctl enable --now kubelet
 
 #newmaster
 kubeadm init --pod-network-cidr=10.244.0.0/16 

@@ -51,11 +51,21 @@ sed -i 's/gtb.local/btg.local/g' /etc/hosts
 sed -i 's/gtb.local/btg.local/g' /etc/containerd/config.toml && systemctl restart containerd && systemctl status containerd
 
 
-#dnf install -y epel-release && dnf install -y nano htop ncdu wget tar telnet iproute-tc nfs-utils
+#dnf install -y epel-release && dnf install -y nano htop ncdu wget tar telnet iproute-tc socat
 
 #dnf install -y chrony && systemctl enable --now chronyd
 
 #nano .bashrc
+alias u='dnf update'
+alias k='kubectl -n dev'
+alias kp='kubectl get po -owide -n dev'
+alias kn='kubectl get no -owide'
+alias ka='kubectl apply -f'
+alias kd='kubectl describe po -n dev'
+alias kl='kubectl logs -f -n dev'
+alias h='helm -n dev'
+alias docker='podman'
+export KUBE_EDITOR=/usr/bin/nano
 
 echo "alias u='apt-get update'" >> .bashrc
 

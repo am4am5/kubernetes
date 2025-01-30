@@ -1,4 +1,4 @@
-k edit deploy -n monitor system-monitor-metrics
+k edit deploy system-monitor-metrics-metrics-server
 
       containers:
       - args:

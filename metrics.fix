@@ -6,5 +6,4 @@ k edit deploy system-monitor-metrics-metrics-server
         - --kubelet-insecure-tls=true
         - --kubelet-preferred-address-types=InternalIP
 
-      dnsPolicy: ClusterFirst
       hostNetwork: true

@@ -11,3 +11,4 @@ nano /etc/yum.repos.d/kubernetes.repo
 dnf --showduplicates list kubeadm
 dnf install kubeadm-<version> kubelet-<version>
 systemctl restart kubelet && systemctl status kubelet
+systemctl restart containerd && systemctl status containerd

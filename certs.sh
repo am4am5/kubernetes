@@ -1,3 +1,5 @@
+kubeadm upgrade plan
+
 kubeadm certs check-expiration
 
 kubeadm certs renew all --cert-duration=78840h0m0s

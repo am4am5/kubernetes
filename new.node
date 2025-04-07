@@ -50,6 +50,9 @@ sed -i 's/registry.gtb.local beltg-28-kubm01/gitlab.gtb.local registry.gtb.local
 sed -i 's/gtb.local/btg.local/g' /etc/hosts
 sed -i 's/gtb.local/btg.local/g' /etc/containerd/config.toml && systemctl restart containerd && systemctl status containerd
 
+#Astra
+no conntrack-tools, iproute-tc 
+chronyd->chrony
 
 #dnf install -y epel-release && dnf install -y nano htop ncdu wget tar telnet iproute-tc socat
 
@@ -106,6 +109,12 @@ enabled=1
 gpgcheck=1
 gpgkey=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/repodata/repomd.xml.key
 EOF
+
+#Astra
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.32/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg && chmod 644 /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.32/deb/ /' | tee /etc/apt/sources.list.d/kubernetes.list && chmod 644 /etc/apt/sources.list.d/kubernetes.list
+apt install -y kubelet kubeadm kubectl cri-tools runc && systemctl enable --now kubelet
+
 
 dnf install -y kubelet kubeadm kubectl cri-tools runc && systemctl enable --now kubelet
 

@@ -84,6 +84,8 @@ setenforce 0 && sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/
 
 swapoff -a && sed -i '/ swap / s/^/#/' /etc/fstab
 
+#grubby.swap
+
 cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
 br_netfilter
 EOF
@@ -104,10 +106,10 @@ modprobe overlay && modprobe br_netfilter
 cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
-baseurl=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/
+baseurl=https://pkgs.k8s.io/core:/stable:/v1.33/rpm/
 enabled=1
 gpgcheck=1
-gpgkey=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/repodata/repomd.xml.key
+gpgkey=https://pkgs.k8s.io/core:/stable:/v1.33/rpm/repodata/repomd.xml.key
 EOF
 
 #Astra

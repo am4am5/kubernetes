@@ -14,7 +14,7 @@ kubeadm init phase kubeconfig kubelet
 
 copy the contents of /etc/kubernetes/admin.conf specifically the keys client-certificate-data and client-key-data and paste those new strings into the file /etc/kubernetes/kubelet.conf under the same keys
 
-kubeadm config print join-defaults > kubeadm.yml
+kubeadm config print init-defaults > kubeadm.yml
 nano kubeadm.yml
 # drop all before second apiVersion
 kubeadm kubeconfig user --org system:nodes --client-name system:node:$(hostname) --config=kubeadm.yml > kubelet.conf2

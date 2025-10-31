@@ -20,4 +20,4 @@ nano kubeadm.yml
 kubeadm kubeconfig user --org system:nodes --client-name system:node:$(hostname) --config=kubeadm.yml > kubelet.conf2
 cp /etc/kubernetes/kubelet.conf /etc/kubernetes/kubelet.conf3
 cp kubelet.conf2 /etc/kubernetes/kubelet.conf
-
+systemctl restart kubelet && systemctl status kubelet

@@ -1,0 +1,4 @@
+config:
+  kafka:
+    brokers:
+      - system-broker-kafka-kafka-bootstrap:9092

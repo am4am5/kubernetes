@@ -1,6 +1,6 @@
 #0. 
-oldip=10.224.32.36
-newip=10.16.64.43
+oldip=10.172.20.1
+newip=10.180.19.1
 
 #1.Find and replace the APIServer address of all configuration files in /etc/kubernetes
 cd /etc/kubernetes 

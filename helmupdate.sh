@@ -1,1 +1,1 @@
-H_VER=3.18.5 && wget https://get.helm.sh/helm-v${H_VER}-linux-amd64.tar.gz && tar xvf helm-v${H_VER}-linux-amd64.tar.gz && mv -f linux-amd64/helm /usr/local/bin/ && rm -rf linux-amd64/ && rm -f helm-v${H_VER}-linux-amd64.tar && helm version
+H_VER=4.1.0 && wget https://get.helm.sh/helm-v${H_VER}-linux-amd64.tar.gz && tar xvf helm-v${H_VER}-linux-amd64.tar.gz && mv -f linux-amd64/helm /usr/local/bin/ && rm -rf linux-amd64/ && rm -f helm-v${H_VER}-linux-amd64.tar && helm version

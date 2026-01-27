@@ -126,7 +126,7 @@ echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.
 apt install -y kubelet kubeadm kubectl cri-tools runc && systemctl enable --now kubelet
 
 
-dnf install -y kubelet kubeadm kubectl cri-tools && systemctl enable --now kubelet
+dnf install -y kubelet kubeadm kubectl cri-tools && systemctl enable --now kubelet && systemctl status kubelet
 
 #newmaster
 kubeadm init --pod-network-cidr=10.244.0.0/16 

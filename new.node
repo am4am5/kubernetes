@@ -57,7 +57,8 @@ chronyd->chrony
 #dnf install -y epel-release && dnf install -y nano htop ncdu wget tar telnet iproute-tc socat
 dnf install -y nano htop ncdu wget telnet socat 7zip
 
-#dnf install -y chrony && systemctl enable --now chronyd
+#dnf install -y chrony
+systemctl enable --now chronyd
 
 #nano .bashrc
 alias u='dnf update --nobest'

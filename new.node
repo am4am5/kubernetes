@@ -55,6 +55,7 @@ no conntrack-tools, iproute-tc
 chronyd->chrony
 
 #dnf install -y epel-release && dnf install -y nano htop ncdu wget tar telnet iproute-tc socat
+dnf install -y nano htop ncdu wget telnet socat 7zip
 
 #dnf install -y chrony && systemctl enable --now chronyd
 
@@ -73,6 +74,8 @@ alias h='helm -n dev'
 alias hp='helm pull --untar'
 alias docker='podman'
 export KUBE_EDITOR=/usr/bin/nano
+
+source .bashrc
 
 echo "alias u='apt-get update'" >> .bashrc
 

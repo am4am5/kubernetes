@@ -1,10 +1,8 @@
 systemctl enable --now kubelet
 
-kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-cert-extra-sans=localhost,127.0.0.1,10.16.64.17
-
-kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.92.254 --control-plane-endpoint=192.168.92.254 --node-name=nansed --apiserver-cert-extra-sans=localhost,127.0.0.1,192.168.92.254,80.94.169.171
-
 kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=knext-master.kali.local --control-plane-endpoint=knext-master.kali.local --apiserver-cert-extra-sans=knext-master.kali.local,10.192.3.20 --upload-certs
+
+--control-plane
 
 kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
 

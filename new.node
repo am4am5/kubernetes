@@ -60,6 +60,20 @@ dnf install -y nano htop ncdu wget telnet socat 7zip
 #dnf install -y chrony
 systemctl enable --now chronyd
 
+nano /etc/hosts
+10.192.3.1 knext-master-1
+10.192.3.12 knext-master-2
+10.192.3.13 knext-master-3
+10.192.3.20 knext-balancer
+10.192.3.2 knext-worker-1
+10.192.3.3 knext-worker-2
+146.75.122.132 dl.rockylinux.org
+213.180.204.183 mirror.yandex.ru
+34.96.108.209 registry.k8s.io
+34.107.204.206 pkgs.k8s.io
+18.244.146.95 prod-cdn.packages.k8s.io
+74.125.131.82 europe-west3-docker.pkg.dev
+
 #nano .bashrc
 alias u='dnf update --nobest'
 alias k='kubectl -n dev'

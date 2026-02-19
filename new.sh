@@ -1,6 +1,6 @@
 systemctl enable --now kubelet
 
-kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=knext-master.kali.local --control-plane-endpoint=knext-master.kali.local --apiserver-cert-extra-sans=knext-master.kali.local,10.192.3.20 --upload-certs
+kubeadm init --pod-network-cidr=10.244.0.0/16 --control-plane-endpoint=knext-master.kali.local --apiserver-cert-extra-sans=knext-master.kali.local,10.192.3.20 --upload-certs
 
 --control-plane
 

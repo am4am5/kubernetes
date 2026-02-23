@@ -73,6 +73,10 @@ nano /etc/hosts
 34.107.204.206 pkgs.k8s.io
 18.244.146.95 prod-cdn.packages.k8s.io
 74.125.131.82 europe-west3-docker.pkg.dev
+74.125.131.82 europe-west10-docker.pkg.dev
+151.101.129.91 dl.k8s.io
+52.219.140.103 prod-registry-k8s-io-eu-central-1.s3.dualstack.eu-central-1.amazonaws.com
+140.82.121.33 ghcr.io
 
 #nano .bashrc
 alias u='dnf update --nobest'

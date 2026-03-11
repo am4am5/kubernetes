@@ -1,1 +1,1 @@
-k -n ingress create secret tls btg-local --cert=/root/2023.crt --key=/root/2023.key
+k create secret tls kali-tls --cert=/root/install/ssl/kali.crt --key=/root/install/ssl/kali.key

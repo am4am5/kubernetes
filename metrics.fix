@@ -7,3 +7,7 @@ k edit deploy system-monitor-metrics-metrics-server
         - --kubelet-preferred-address-types=InternalIP
 
       hostNetwork: true
+
+kubectl get csr
+kubectl certificate approve <csr>
+systemctl restart kubelet

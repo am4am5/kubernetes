@@ -1,0 +1,11 @@
+k edit cm -n kube-system coredns
+
+
+           ttl 30
+        }
+        hosts {
+           10.16.32.246 gitlab.edo.iba registry.edo.iba
+           10.111.2.40 gw.nces.by
+           fallthrough
+        }
+        prometheus :9153

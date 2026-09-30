@@ -2,6 +2,8 @@ echo "PermitRootLogin yes" > /etc/ssh/sshd_config.d/01-root.conf && systemctl re
 
 sed -i '/root/ s/^/#/' /etc/cockpit/disallowed-users && systemctl enable --now cockpit.socket
 
+#disk.root
+
 hostnamectl set-hostname next
 
 dnf install -y epel-release && dnf install -y nano htop ncdu wget telnet socat 7zip

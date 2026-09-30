@@ -1,0 +1,14 @@
+1. 
+lsblk
+pvs
+vgs
+lvs
+2.
+dnf install cloud-utils-growpart -y
+growpart /dev/sda 3
+3.
+pvresize /dev/sda3
+4.
+lvextend -r -l +100%FREE /dev/mapper/rl-root
+
+df -h
